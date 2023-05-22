@@ -40,39 +40,6 @@
   --card-border-rgb: 131, 134, 135;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-
-    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-    --secondary-glow: linear-gradient(
-      to bottom right,
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0.3)
-    );
-
-    --tile-start-rgb: 2, 13, 46;
-    --tile-end-rgb: 2, 5, 19;
-    --tile-border: conic-gradient(
-      #ffffff80,
-      #ffffff40,
-      #ffffff30,
-      #ffffff20,
-      #ffffff10,
-      #ffffff10,
-      #ffffff80
-    );
-
-    --callout-rgb: 20, 20, 20;
-    --callout-border-rgb: 108, 108, 108;
-    --card-rgb: 100, 100, 100;
-    --card-border-rgb: 200, 200, 200;
-  }
-}
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -83,6 +50,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
 body {
@@ -124,6 +92,12 @@ a {
   display: none;
 }
 
+#mobileMenu .menuItem a {
+  display:block;
+  padding:5px 10px;
+  border-bottom:1px solid #aaa;
+}
+
 #bodyContainer {
   max-width:1000px;
   padding:0px 30px 40px 30px;
@@ -140,39 +114,62 @@ a {
   width:100%;
   margin-top:20px;
 }
-#carData table {
+#carData .table {
   flex:1;
-  border: 1px solid #eee;
+  border: 1px solid #aaa;
   border-bottom:0;
   border-collapse: collapse;
 }
 
-#carData table tr{
-  padding:10px;
+.table .tableRow{
+  display:flex;
+  padding:4px;
+  justify-content: space-between;
 }
 
-td.value {
+.tableRow .value {
   text-align:right;
   padding:7px 10px;
 }
 
-td.label {
+.tableRow .label {
   padding:7px 10px;
 }
 #totalDaily, #totalWeekend {
   margin-top:1px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #aaa;
+}
+
+#carData #weekend {
+    border-top-left-radius: 10px;
+    border-right: 0;
+}
+
+#daily {
+    border-top-right-radius: 10px;
 }
 
 #dougScore {
   width:100%;
-  border: 1px solid #eee;
+  border: 1px solid #aaa;
   font-size: 150%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
+
 
 @media screen and (max-width: 670px) {
   #carData {
     flex-direction: column;
+  }
+
+  #carData #weekend {
+      border-top-right-radius: 10px;
+      border-right: 1px solid #aaa;
+  }
+
+  #carData #daily {
+      border-top-right-radius: 0px;
   }
 
   #desktopMenu{
@@ -190,8 +187,6 @@ td.label {
 
   #mobileMenu {
     display:block;
-    padding:10px;
-    border-bottom:1px solid #eee;
     margin-bottom: 15px;
   }
 

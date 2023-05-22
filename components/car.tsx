@@ -12,65 +12,65 @@ export default function Car({ car }: CarProps) {
       </h2>
       <h3>Made in {car.vc}</h3>
       <div id="carData">
-        <table id="weekend">
-          <tr id="styling">
-            <td className="label">Styling</td>
-            <td className="value">{car.s}</td>{" "}
-          </tr>
-          <tr id="acceleration">
-            <td className="label">Styling</td>
-            <td className="value">{car.a}</td>
-          </tr>
-          <tr id="handling">
-            <td className="label">Handling</td>
-            <td className="value">{car.h}</td>
-          </tr>
-          <tr id="funfactor">
-            <td className="label">Fun Factor</td>
-            <td className="value">{car.ff}</td>
-          </tr>
-          <tr id="coolfactor">
-            <td className="label">Cool Factor</td>
-            <td className="value">{car.cf}</td>
-          </tr>
-          <tr id="totalWeekend">
-            <td className="label">Total Weekend:</td>
-            <td className="value">{car.tw}</td>
-          </tr>
-        </table>
-        <table id="daily">
-          <tr id="features">
-            <td className="label">Features</td>
-            <td className="value">{car.f}</td>
-          </tr>
-          <tr id="comfort">
-            <td className="label">Comfort</td>
-            <td className="value">{car.c}</td>
-          </tr>
-          <tr id="quality">
-            <td className="label">Quality</td>
-            <td className="value">{car.q}</td>
-          </tr>
-          <tr id="practicality">
-            <td className="label">Practicality</td>
-            <td className="value">{car.p}</td>
-          </tr>
-          <tr id="value">
-            <td className="label">Value</td>
-            <td className="value">{car.v}</td>
-          </tr>
-          <tr id="totalDaily">
-            <td className="label">Total Daily:</td>
-            <td className="value">{car.td}</td>
-          </tr>
-        </table>
+        <div className="table" id="weekend">
+          <div className="tableRow" id="styling">
+            <div className="label">Styling</div>
+            <div className="value">{car.s}</div>{" "}
+          </div>
+          <div className="tableRow" id="acceleration">
+            <div className="label">Styling</div>
+            <div className="value">{car.a}</div>
+          </div>
+          <div className="tableRow" id="handling">
+            <div className="label">Handling</div>
+            <div className="value">{car.h}</div>
+          </div>
+          <div className="tableRow" id="funfactor">
+            <div className="label">Fun Factor</div>
+            <div className="value">{car.ff}</div>
+          </div>
+          <div className="tableRow" id="coolfactor">
+            <div className="label">Cool Factor</div>
+            <div className="value">{car.cf}</div>
+          </div>
+          <div className="tableRow" id="totalWeekend">
+            <div className="label">Total Weekend:</div>
+            <div className="value">{car.tw}</div>
+          </div>
+        </div>
+        <div className="table" id="daily">
+          <div className="tableRow" id="features">
+            <div className="label">Features</div>
+            <div className="value">{car.f}</div>
+          </div>
+          <div className="tableRow" id="comfort">
+            <div className="label">Comfort</div>
+            <div className="value">{car.c}</div>
+          </div>
+          <div className="tableRow" id="quality">
+            <div className="label">Quality</div>
+            <div className="value">{car.q}</div>
+          </div>
+          <div className="tableRow" id="practicality">
+            <div className="label">Practicality</div>
+            <div className="value">{car.p}</div>
+          </div>
+          <div className="tableRow" id="value">
+            <div className="label">Value</div>
+            <div className="value">{car.v}</div>
+          </div>
+          <div className="tableRow" id="totalDaily">
+            <div className="label">Total Daily:</div>
+            <div className="value">{car.td}</div>
+          </div>
+        </div>
       </div>
-      <table id="dougScore">
-        <tr>
-          <td className="label">Doug Score:</td>
-          <td className="value">{car.ds}</td>
-        </tr>
-      </table>
+      <div className="table" id="dougScore">
+        <div className="tableRow">
+          <div className="label">Doug Score:</div>
+          <div className="value">{car.ds}</div>
+        </div>
+      </div>
     </div>
   );
 }
