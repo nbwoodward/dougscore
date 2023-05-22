@@ -15,7 +15,8 @@ export default function Car({ car }: CarProps) {
         <table id="weekend">
           <tr id="styling">
             <td className="label">Styling</td>
-            <td className="value">{car.s}</td> </tr>
+            <td className="value">{car.s}</td>{" "}
+          </tr>
           <tr id="acceleration">
             <td className="label">Styling</td>
             <td className="value">{car.a}</td>
@@ -33,7 +34,7 @@ export default function Car({ car }: CarProps) {
             <td className="value">{car.cf}</td>
           </tr>
           <tr id="totalWeekend">
-            <td className="label">Total Weekend</td>
+            <td className="label">Total Weekend:</td>
             <td className="value">{car.tw}</td>
           </tr>
         </table>
@@ -59,15 +60,15 @@ export default function Car({ car }: CarProps) {
             <td className="value">{car.v}</td>
           </tr>
           <tr id="totalDaily">
-            <td className="label">Total Daily</td>
+            <td className="label">Total Daily:</td>
             <td className="value">{car.td}</td>
           </tr>
         </table>
       </div>
       <table id="dougScore">
         <tr>
-        <td className="label">Doug Score:</td>
-        <td className="value">{car.ds}</td>
+          <td className="label">Doug Score:</td>
+          <td className="value">{car.ds}</td>
         </tr>
       </table>
     </div>

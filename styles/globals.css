@@ -142,12 +142,14 @@ a {
 #carData table tr{
   padding:10px;
 }
+
 td.value {
   text-align:right;
-  padding:5px 10px;
+  padding:7px 10px;
 }
+
 td.label {
-  padding:0 10px;
+  padding:7px 10px;
 }
 #totalDaily, #totalWeekend {
   margin-top:1px;
@@ -160,6 +162,11 @@ td.label {
   font-size: 150%;
 }
 
+@media screen and (max-width: 670px) {
+  #carData {
+    flex-direction: column;
+  }
+}
 
 @media (prefers-color-scheme: dark) {
   html {
