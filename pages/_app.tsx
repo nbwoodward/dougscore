@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <main className={openSans.className}>
       <Header />
-      <div id="body-container">
+      <div id="bodyContainer">
         <Component {...pageProps} />
       </div>
     </main>

@@ -100,26 +100,34 @@ a {
   text-decoration: none;
 }
 
-.header{
+#header{
   display:flex;
   flex-direction: row;
   padding:10px 20px;
   border-bottom: 1px solid #aaa;
-  margin-bottom:15px;
 }
 
-.header #title {
+#desktopMenu {
+  display:flex;
+  flex-direction:row;
+}
+
+#header #title {
   padding-right:20px;
 }
 
-.header .menuItem {
+#header .menuItem {
   padding: 0 15px;
 }
 
-#body-container {
+#mobileMenu, #mobileHamburger {
+  display: none;
+}
+
+#bodyContainer {
   max-width:1000px;
-  margin:auto;
   padding:0px 30px 40px 30px;
+  margin: 15px auto;
 }
 
 #carPage{
@@ -166,6 +174,27 @@ td.label {
   #carData {
     flex-direction: column;
   }
+
+  #desktopMenu{
+    display:none;
+  }
+
+  #mobileHamburger{
+    display:flex;
+    margin-left: auto;
+  }
+
+  #header {
+    position:relative;
+  }
+
+  #mobileMenu {
+    display:block;
+    padding:10px;
+    border-bottom:1px solid #eee;
+    margin-bottom: 15px;
+  }
+
 }
 
 @media (prefers-color-scheme: dark) {
