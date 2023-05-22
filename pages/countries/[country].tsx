@@ -1,27 +1,33 @@
 import { useState, useEffect } from "react";
-import { vehicles, Vehicle } from "@/lib/dougscore";
+import { vehicles, Vehicle, countries, Country } from "@/lib/dougscore";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import Table from "@/components/table";
 
-
 export default function Country() {
-  const [cars, setCars] = useState<Vehicle[]>([])
-  const router = useRouter()
+  const [cars, setCars] = useState<Vehicle[]>([]);
+  const [country, setCountry] = useState<Country>();
+  const router = useRouter();
 
-  useEffect( () => {
-    const countrySlug = router?.query?.country
-    if (!countrySlug) return
+  useEffect(() => {
+    const countrySlug = router?.query?.country;
+    if (!countrySlug) return;
 
-    const countryVehicles = vehicles.filter( c => c.countrySlug === countrySlug)
-    setCars(countryVehicles)
+    const countryVehicles = vehicles.filter(
+      (c) => c.countrySlug === countrySlug
+    );
+    setCars(countryVehicles);
 
-  }, [router])
-
-
+    const country = countries.filter((c) => c.slug === countrySlug)?.[0];
+    setCountry(country);
+  }, [router]);
 
   return (
     <>
+      <Head>
+        <title>Doug Score - {country?.name}</title>
+      </Head>
       <Table vehicles={cars} />
     </>
-  )
+  );
 }
