@@ -1,17 +1,19 @@
+import Link from "next/link";
+
 export default function Header() {
   return (
     <div className="header">
       <div id="title">
-        <a href="/">Unofficlal Doug Score</a>
+        <Link href="/">Unofficlal Doug Score</Link>
       </div>
       <div className="menuItem">
-        <a href="/">All Cars</a>
+        <Link href="/">All Cars</Link>
       </div>
       <div className="menuItem">
-        <a href="/countries">All Countries</a>
+        <Link href="/countries">All Countries</Link>
       </div>
       <div className="menuItem">
-        <a href="/makes">All Makes</a>
+        <Link href="/makes">All Makes</Link>
       </div>
     </div>
   );
