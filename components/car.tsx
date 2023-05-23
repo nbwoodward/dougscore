@@ -1,4 +1,6 @@
+import { AiOutlineArrowRight } from "react-icons/ai";
 import { Vehicle } from "@/lib/dougscore";
+import Link from "next/link";
 
 interface CarProps {
   car: Vehicle;
@@ -70,6 +72,14 @@ export default function Car({ car }: CarProps) {
           <div className="label">Doug Score:</div>
           <div className="value">{car.ds}</div>
         </div>
+      </div>
+      <div id="videoLink">
+        {car.vl && (
+          <Link href={car.vl} target="_blank">
+            <div>YouTube Video</div>
+            <AiOutlineArrowRight />
+          </Link>
+        )}
       </div>
     </div>
   );

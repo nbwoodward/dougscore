@@ -1,14 +1,26 @@
 import { dougScoreRaw } from "./dougScoreRaw";
 
-export interface Country {
+export interface AggregateData {
   name: string;
   slug: string;
+  averageWeekend: number;
+  averageDaily: number;
+  averageDougScore: number;
+  numCars: number;
 }
 
-export interface Make {
-  name: string;
-  slug: string;
-}
+export interface Country extends AggregateData {}
+
+const DEFAULT_RECORD = {
+  name: "",
+  slug: "",
+  averageWeekend: 0,
+  averageDaily: 0,
+  averageDougScore: 0,
+  numCars: 0,
+};
+
+export interface Make extends AggregateData {}
 
 export interface Vehicle {
   yr: number; // Year
@@ -36,26 +48,51 @@ export interface Vehicle {
   countrySlug: string;
 }
 
-const toSlug = (str: string): string => str
-  .replace(/\s+/g, "-")
-  .replace(/[^a-zA-Z0-9-]/g,'')
-  .toLowerCase();
+const toSlug = (str: string): string =>
+  str
+    .replace(/\s+/g, "-")
+    .replace(/[^a-zA-Z0-9-]/g, "")
+    .toLowerCase();
 
 const countryMap: any = {};
 const makeMap: any = {};
-const vehicles: Vehicle[] = []
+const vehicles: Vehicle[] = [];
 
 dougScoreRaw.forEach((row) => {
   const country = row.vc.trim();
-  const countrySlug = toSlug(country)
+  const countrySlug = toSlug(country);
   const make = row.mk.trim();
-  const makeSlug = toSlug(make)
-  const model = String(row.md).trim()
-  const modelSlug = toSlug(model)
+  const makeSlug = toSlug(make);
+  const model = String(row.md).trim();
+  const modelSlug = toSlug(model);
 
-  countryMap[country] = { name: country, slug: countrySlug };
-  makeMap[make] = { name: make, slug: makeSlug };
-  vehicles.push({...row, md: model, makeSlug, modelSlug, countrySlug })
+  const lcr = countryMap[country] || DEFAULT_RECORD;
+  const countryRecord = {
+    name: country,
+    slug: countrySlug,
+    averageWeekend:
+      (lcr.averageWeekend * lcr.numCars + row.tw) / (lcr.numCars + 1),
+    averageDaily: (lcr.averageDaily * lcr.numCars + row.td) / (lcr.numCars + 1),
+    averageDougScore:
+      (lcr.averageDougScore * lcr.numCars + row.ds) / (lcr.numCars + 1),
+    numCars: lcr.numCars + 1,
+  };
+
+  const lmr = makeMap[make] || DEFAULT_RECORD;
+  const makeRecord = {
+    name: make,
+    slug: makeSlug,
+    averageWeekend:
+      (lmr.averageWeekend * lmr.numCars + row.tw) / (lmr.numCars + 1),
+    averageDaily: (lmr.averageDaily * lmr.numCars + row.td) / (lmr.numCars + 1),
+    averageDougScore:
+      (lmr.averageDougScore * lmr.numCars + row.ds) / (lmr.numCars + 1),
+    numCars: lmr.numCars + 1,
+  };
+
+  countryMap[country] = countryRecord;
+  makeMap[make] = makeRecord;
+  vehicles.push({ ...row, md: model, makeSlug, modelSlug, countrySlug });
 });
 
 const countries: Country[] = Object.values(countryMap);

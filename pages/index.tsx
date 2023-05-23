@@ -1,5 +1,5 @@
 import { vehicles } from "@/lib/dougscore";
-import Table from "@/components/table";
+import CarTable from "@/components/carTable";
 import Head from "next/head";
 
 export default function Country() {
@@ -8,7 +8,7 @@ export default function Country() {
       <Head>
         <title>The Unofficial Doug Score</title>
       </Head>
-      <Table vehicles={vehicles} />
+      <CarTable vehicles={vehicles} />
     </>
   );
 }

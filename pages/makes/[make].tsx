@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { vehicles, Vehicle, makes, Make } from "@/lib/dougscore";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import Table from "@/components/table";
+import CarTable from "@/components/carTable";
 
 export default function Make() {
   const [cars, setCars] = useState<Vehicle[]>([]);
@@ -25,7 +25,7 @@ export default function Make() {
       <Head>
         <title>Doug Score - {make?.name}</title>
       </Head>
-      <Table vehicles={cars} />
+      <CarTable vehicles={cars} />
     </>
   );
 }
