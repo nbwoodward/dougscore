@@ -34,7 +34,7 @@ export default function DataTable({ data, cols }: TableProps) {
 
   useEffect(() => {
     if (!intData) return;
-    const dat = [...intData];
+    const dat = [...data];
 
     if (sortData.type === "string") {
       dat.sort((a, b) => {
@@ -49,7 +49,7 @@ export default function DataTable({ data, cols }: TableProps) {
     }
 
     setIntData(dat);
-  }, [sortData, intData]);
+  }, [sortData]);
 
   const onHeaderClick = (col: string, type: ColumnTypes) => {
     if (col === sortData.col) {
