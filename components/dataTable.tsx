@@ -5,6 +5,7 @@ import {
   MdOutlineKeyboardArrowDown,
 } from "react-icons/md";
 import { VscBlank } from "react-icons/vsc";
+import Tooltip from "./tooltip";
 
 type ColumnTypes = "string" | "number";
 
@@ -26,14 +27,14 @@ export default function DataTable({ data, cols }: TableProps) {
     col: string;
     desc: boolean;
     type: ColumnTypes;
-  }>({ col: "name", desc: true, type: "string" });
+  }>({ col: "", desc: true, type: "string" });
 
   useEffect(() => {
     setIntData(data);
   }, [data]);
 
   useEffect(() => {
-    if (!intData) return;
+    if (!data || !sortData.col) return;
     const dat = [...data];
 
     if (sortData.type === "string") {
@@ -49,7 +50,7 @@ export default function DataTable({ data, cols }: TableProps) {
     }
 
     setIntData(dat);
-  }, [sortData]);
+  }, [sortData, data]);
 
   const onHeaderClick = (col: string, type: ColumnTypes) => {
     if (col === sortData.col) {
@@ -66,14 +67,15 @@ export default function DataTable({ data, cols }: TableProps) {
   );
 
   const ColHeader = ({ title, slug, type, tooltip }: Column) => (
-    <td onClick={() => onHeaderClick(slug, type)}>
-      <div title={tooltip}>
-        <div className="title" id={slug}>
-          {title}
-        </div>{" "}
-        {sortData.col == slug ? icon : <VscBlank />}
+    <td onClick={() => onHeaderClick(slug, type)} key={slug}>
+      <div>
+        <Tooltip delay={0} direction="top" content={tooltip}>
+          <div className="title" id={slug}>
+            {title}
+          </div>
+          {sortData.col == slug ? icon : <VscBlank />}
+        </Tooltip>
       </div>
-      <span>{tooltip}</span>
     </td>
   );
 
@@ -87,6 +89,7 @@ export default function DataTable({ data, cols }: TableProps) {
               slug={col.slug}
               type={col.type}
               key={col.slug}
+              tooltip={col.tooltip}
             />
           ))}
         </tr>

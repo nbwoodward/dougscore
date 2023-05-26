@@ -11,11 +11,15 @@
   td {
     padding:5px;
     border-bottom:1px solid #eee;
+  }
+
+  tbody td {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     max-width: 200px;
   }
+
 
   thead tr td div .title{
     padding-right:7px;
