@@ -1,18 +1,22 @@
 import { countries } from "@/lib/dougscore";
-import Link from "next/link";
 import Head from "next/head";
+import DataTable, { Column } from "@/components/dataTable";
 
 export default function Countries() {
+  const cols: Column[] = [
+    { title: "Name", slug: "name", type: "string" },
+    { title: "Avg Weekend", slug: "averageWeekend", type: "number" },
+    { title: "Avg Daily", slug: "averageDaily", type: "number" },
+    { title: "Avg Total", slug: "averageDougScore", type: "number" },
+    { title: "Num Cars", slug: "numCars", type: "number" },
+  ];
+
   return (
     <>
       <Head>
         <title>Doug Score - All Makes</title>
       </Head>
-      {countries.map((c) => (
-        <div key={c.slug}>
-          <Link href={`countries/${c.slug}`}>{c.name}</Link>
-        </div>
-      ))}
+      <DataTable data={countries} cols={cols} />
     </>
   );
 }

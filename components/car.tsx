@@ -10,9 +10,11 @@ export default function Car({ car }: CarProps) {
   return (
     <div id="carPage">
       <h2>
-        {car.yr} {car.mk} {car.md}
+        {car.yr} <Link href={`/makes/${car.makeSlug}`}>{car.mk}</Link> {car.md}
       </h2>
-      <h3>Made in {car.vc}</h3>
+      <h3>
+        Made in <Link href={`/countries/${car.countrySlug}`}>{car.vc}</Link>
+      </h3>
       <div id="carData">
         <div className="table" id="weekend">
           <div className="tableRow" id="styling">

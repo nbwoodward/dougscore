@@ -1,0 +1,24 @@
+.dataTable {
+  width:100%;
+
+  thead tr td div {
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  td {
+    padding:5px;
+    border-bottom:1px solid #eee;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 200px;
+  }
+
+  thead tr td div .title{
+    padding-right:7px;
+
+  }
+}
