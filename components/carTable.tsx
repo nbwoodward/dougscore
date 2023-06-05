@@ -19,6 +19,7 @@ export default function CarTable({ vehicles }: CarTableProps) {
     { title: "F", slug: "f", type: "number", tooltip: "Features" },
     { title: "C", slug: "c", type: "number", tooltip: "Comfort" },
     { title: "Q", slug: "q", type: "number", tooltip: "Quality" },
+    { title: "P", slug: "p", type: "number", tooltip: "Practicality" },
     { title: "V", slug: "v", type: "number", tooltip: "Value" },
     { title: "TD", slug: "td", type: "number", tooltip: "Total Daily" },
     { title: "DS", slug: "ds", type: "number", tooltip: "Doug Score" },
