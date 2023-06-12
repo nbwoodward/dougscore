@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import {
   MdOutlineKeyboardArrowUp,
@@ -52,13 +52,16 @@ export default function DataTable({ data, cols }: TableProps) {
     setIntData(dat);
   }, [sortData, data]);
 
-  const onHeaderClick = (col: string, type: ColumnTypes) => {
-    if (col === sortData.col) {
-      setSortData({ col: sortData.col, desc: !sortData.desc, type });
-    } else {
-      setSortData({ col: col, desc: true, type });
-    }
-  };
+  const onHeaderClick = useCallback(
+    (col: string, type: ColumnTypes) => {
+      if (col === sortData.col) {
+        setSortData({ col: sortData.col, desc: !sortData.desc, type });
+      } else {
+        setSortData({ col: col, desc: true, type });
+      }
+    },
+    [sortData]
+  );
 
   const icon = sortData.desc ? (
     <MdOutlineKeyboardArrowUp />

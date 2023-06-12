@@ -22,7 +22,7 @@ export default function Car({ car }: CarProps) {
             <div className="value">{car.s}</div>{" "}
           </div>
           <div className="tableRow" id="acceleration">
-            <div className="label">Styling</div>
+            <div className="label">Acceleration</div>
             <div className="value">{car.a}</div>
           </div>
           <div className="tableRow" id="handling">
